@@ -1,0 +1,7 @@
+{
+  "name": "IonicSingularity",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
