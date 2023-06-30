@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
-  appName: 'IonicSingularity',
+  appName: 'Singularity',
+  appSlogan: 'Encontre seu equilíbrio',
   firebase: {
       apiKey: 'AIzaSyBiSsbt7axuo7FuVKYDtEboGaYhFWHZmco',
       authDomain: 'ionicsingularity.firebaseapp.com',
