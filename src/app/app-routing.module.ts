@@ -48,6 +48,44 @@ const routes: Routes = [
     loadChildren: () => import('./user/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
+    path: 'fbpopulate',
+    loadChildren: () => import('./temp/fbpopulate/fbpopulate.module').then( m => m.FbpopulatePageModule)
+  },
+  {
+    path: 'fbview',
+    loadChildren: () => import('./temp/fbview/fbview.module').then( m => m.FbviewPageModule)
+  },
+  {
+    path: 'fblist',
+    loadChildren: () => import('./temp/fblist/fblist.module').then( m => m.FblistPageModule)
+  },
+  {
+    path: 'view/:id',
+    title: `${env.appName} - Exibe umas coisas`,
+    loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'policies',
+    loadChildren: () => import('./pages/policies/policies.module').then( m => m.PoliciesPageModule)
+  },
+  {
+    path: 'store',
+    loadChildren: () => import('./temp/store/store.module').then( m => m.StorePageModule)
+  },
+  {
+    path: 'gps',
+    loadChildren: () => import('./gps/gps.module').then( m => m.GpsPageModule)
+  },
+  {
+    path: 'camera',
+    title: `${env.appName} - Tirar Foto`,
+    loadChildren: () => import('./pages/camera/camera.module').then( m => m.CameraPageModule)
+  },
+  {
     path: '**',
     redirectTo: '404',
     pathMatch: 'full'

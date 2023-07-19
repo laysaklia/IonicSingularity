@@ -2,6 +2,8 @@ export const environment = {
   production: false,
   appName: 'Singularity',
   appSlogan: 'Encontre seu equilíbrio',
+  signInMethod: 'redirect', // redirect || popup
+  policiesDate: '2023-07-07',
   firebase: {
       apiKey: 'AIzaSyBiSsbt7axuo7FuVKYDtEboGaYhFWHZmco',
       authDomain: 'ionicsingularity.firebaseapp.com',

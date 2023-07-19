@@ -1,7 +1,8 @@
+import { environment } from './../environments/environment';
 import { Component, inject } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Auth, authState, GoogleAuthProvider, signInWithPopup, User } from '@angular/fire/auth';
+import { Auth, authState, User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -9,16 +10,18 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent {
 
-  public env = environment;
+  env = environment;
   private auth: Auth = inject(Auth);
-  authState$ = authState(this.auth);
+  authState = authState(this.auth);
   authStateSubscription: Subscription;
 
   public appPages = [
     { title: 'Início', url: '/home', icon: 'home' },
-    { title: 'Sobre nós', url: '/sobre', icon: 'chatbox-ellipses' },
-    { title: 'Contato', url: '/contato', icon: 'information-circle' },
-  ]
+    { title: 'Faça Contato', url: '/contacts', icon: 'chatbubbles' },
+    { title: 'Geolocalização', url: '/gps', icon: 'map' },
+    { title: 'Sobre', url: '/about', icon: 'information-circle' },
+    { title: 'Sua Privacidade', url: '/policies', icon: 'document-lock' }
+  ];
 
   public appUser = {
     logged: false,
@@ -29,7 +32,7 @@ export class AppComponent {
   }
 
   constructor() {
-    this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
+    this.authStateSubscription = this.authState.subscribe((aUser: User | null) => {
       if (aUser !== null) {
         this.appUser = {
           logged: true,
@@ -43,19 +46,8 @@ export class AppComponent {
   }
 
   ngOnDestroy() {
+    // when manually subscribing to an observable remember to unsubscribe in ngOnDestroy
     this.authStateSubscription.unsubscribe();
   }
 
-  login() {
-
-    signInWithPopup(this.auth, new GoogleAuthProvider())
-      .then((a) => {
-        location.href = '/home';
-      })
-      .catch((error) => {
-        console.error(error.code, error.message, error.customData.email);
-        alert("Oooops! Ocorreram erros ao fazer login.");
-      })
-
-  }
 }
