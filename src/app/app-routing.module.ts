@@ -62,7 +62,7 @@ const routes: Routes = [
   {
     path: 'view/:id',
     title: `${env.appName} - Exibe umas coisas`,
-    loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule)
+    loadChildren: () => import('./temp/view/view.module').then( m => m.ViewPageModule)
   },
   {
     path: 'cadastro',
@@ -78,7 +78,7 @@ const routes: Routes = [
   },
   {
     path: 'gps',
-    loadChildren: () => import('./gps/gps.module').then( m => m.GpsPageModule)
+    loadChildren: () => import('./temp/gps/gps.module').then( m => m.GpsPageModule)
   },
   {
     path: 'camera',
@@ -89,6 +89,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: '404',
     pathMatch: 'full'
+  },
+  {
+    path: 'new',
+    loadChildren: () => import('./things/new/new.module').then( m => m.NewPageModule)
   }
 ];
 
